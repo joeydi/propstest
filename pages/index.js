@@ -1,5 +1,4 @@
 import Link from "next/link";
-import articles from "../articles";
 
 export default function Home({ articles }) {
     return (
@@ -19,6 +18,9 @@ export default function Home({ articles }) {
 }
 
 export async function getStaticProps() {
+    const res = await fetch("https://simple-creature-website-assets.s3.amazonaws.com/propstest/articles.json");
+    const articles = await res.json();
+
     return {
         props: {
             articles,
